@@ -1,0 +1,282 @@
+/* RESET CSS */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+*:focus {
+  outline: 3px solid #F0A500;
+  outline-offset: 0;
+}
+html {
+  font: 62.5% / 1.15 sans-serif;
+}
+h1,
+h2 {
+  margin-bottom: 0;
+}
+ul {
+  list-style: none;
+  padding: 0;
+}
+button {
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  line-height: normal;
+  -webkit-font-moothing: inherit;
+  -webkit-appearance: none;
+}
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+}
+input[type="text"] {
+  border-radius: 0;
+}
+body {
+  width: 100%;
+  max-width: 68rem;
+  margin: 0 auto;
+  font: 1.6rem / 1.25 Montserrat, sans-serif;
+  background-color: #f5f5f5;
+  color: #4d4d4d;
+}
+/*************************************************************/
+
+/* Global css */
+.todoapp {
+  background-color: #fff;
+  text-align: center;
+  padding: 1rem;
+  margin: 10px auto 20px auto;
+  max-width: 600px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2.5rem 5rem 0 rgba(0, 0, 0, 0.1);
+}
+.todoapp-body {
+  max-width: 480px;
+  margin: 8px auto 0 auto;
+  padding: 2rem;
+}
+.btn {
+  padding: 0.8rem 1rem 0.7rem;
+  border: 0.2rem solid #4d4d4d;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+.btn--add {
+  background-color: #000;
+  color: #fff;
+  margin-top: 8px;
+  font-size: 2rem;
+}
+.btn--danger {
+  background-color: #CA3C3C;
+  color: #fff;
+  border-color: #D2434D;
+  font-size: 1.6rem;
+}
+h1 {
+  font-family: 'Lobster', cursive;
+  color: red;
+  font-size: 40px;
+}
+form {
+  padding: 2rem;
+  padding-bottom: 0;
+}
+
+.todo-input {
+  display: flex;
+  flex-direction: column;
+
+  input[type="text"] {
+    display: inline-block;
+    margin-top: 0.4rem;
+    font-size: 2rem;
+  }
+
+  input {
+    padding: 2rem;
+    border: 2px solid #000;
+  }
+}
+/*****************************************************************/
+
+/* Todoapp body css */
+.filter-button {
+  display: flex;
+  justify-content: space-around;
+  column-gap: 8px;
+
+  .btn--filter {
+    border: 1px solid #d3d3d3;
+    flex: 1;
+
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+}
+
+#list-heading {
+  text-align: left;
+}
+
+.todo-list__item {
+  margin-top: 16px;
+
+  input[type="checkbox"] {
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+  }
+
+  .todo-list__label {
+    cursor: pointer;
+    font-size: 2rem;
+    font-family: inherit;
+    display: inline-block;
+    padding: 8px 15px 5px;
+    text-align: left;
+  }
+
+  .todo-list__check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .todo-list__label {
+      flex: 1;
+      font-size: 2rem;
+    }
+
+    input[type="checkbox"] {
+      outline: none;
+    }
+  }
+
+  .todo-list__edit {
+    display: flex;
+    flex-direction: column;
+
+    input[type="text"] {
+      font-size: 2rem;
+      border: 2px solid #000;
+      padding: 0.8rem;
+    }
+
+    .todo-list__label {
+      padding: 0;
+    }
+  }
+
+  .todo-list__btn {
+      display: flex;
+      justify-content: space-around;
+      column-gap: 8px;
+      margin-top: 8px;
+
+      button {
+        flex: 1;
+      }
+    }
+}
+/*******************************************/
+
+/* Toast message css */
+#toast {
+  position: fixed;
+  top: 32px;
+  right: 32px;
+  z-index: 9999;
+}
+.toast {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 2px;
+  min-width: 400px;
+  max-width: 450px;
+  border-left: 4px solid;
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.08);
+  animation: slideInLeft ease .3s, fadeOut linear 1s 3s forwards;
+  transition: all linear 0.3s;    
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(calc(100% + 32px));
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
+}
+
+.toast + .toast {
+  margin-top: 24px;
+}   
+
+.toast__icon {
+  font-size: 24px;
+  padding: 0 16px;
+}
+
+.toast__body {
+  flex-grow: 1;
+}
+
+.toast__title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.toast__msg {
+  font-size: 14px;
+  color: #888;
+  margin-top: 8px;
+  line-height: 1.5;
+}
+
+.toast__close {
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.3);
+  padding: 0 16px;
+  cursor: pointer;
+}
+.toast--success {
+  border-color: #47d864;
+}
+
+.toast--success .toast__icon {
+  color: #47d864;
+}
+
+.toast--error {
+  border-color: #ff623d;
+}
+
+.toast--error .toast__icon {
+  color: #ff623d;
+}
