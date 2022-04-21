@@ -153,6 +153,10 @@ form {
     text-align: left;
   }
 
+  .todo-list__completed {
+    text-decoration: line-through;
+  }
+
   .todo-list__check {
     display: flex;
     align-items: center;

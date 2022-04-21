@@ -1,10 +1,12 @@
 import { useState } from 'react'
-import './App.scss'
+import { nanoid } from 'nanoid'
 import Todo from './components/Todo'
 import Heading from './components/Heading'
 import FilterButton from './components/FilterButton'
 import ToastMessage from './components/ToastMessage'
 import { FILTER_MODE } from './components/actions'
+
+import './App.scss'
 
 function App() {
   const [tasks, setTasks] = useState([])
@@ -12,7 +14,7 @@ function App() {
   const [toasts, setToasts] = useState([])
   const listTodo = tasks
     .filter(FILTER_MODE[filter])
-    .map((task, index) => 
+    .map(task => 
       <Todo
         task={task.name}
         index={task.id}
@@ -34,7 +36,7 @@ function App() {
     const newTask = {
       name,
       completed: false,
-      id: tasks.length
+      id: nanoid()
     }
     setTasks(task => [...task, newTask])
   }
@@ -45,16 +47,17 @@ function App() {
   }
 
   function editTask(index, newTask) {
-    setTasks(tasks.map((task, i) => {
-      if (i === index) { task.name = newTask}
+    setTasks(tasks.map(task => {
+      console.log(task)
+      if (task.id === index) { task.name = newTask}
       return task
     }))
     handleSuccessToast(newTask)
   }
 
   function toggleCompleteTask(index) {
-    setTasks(tasks.map((task, i) => {
-      if (i === index) { task.completed = !task.completed}
+    setTasks(tasks.map(task => {
+      if (task.id === index) { task.completed = !task.completed}
       return task
     }))
   }
@@ -62,7 +65,7 @@ function App() {
   function handleSuccessToast(newTask) {
     setToasts(toast => {
       const newToast = {
-        id: toast.length,
+        id: nanoid(),
         type: 'success',
         title: `Edit to ${newTask} successfully`
       }
@@ -73,7 +76,7 @@ function App() {
   function handleDeleteToast(name) {
     setToasts(toast => {
       const newToast = {
-        id: toast.length,
+        id: nanoid(),
         type: 'error',
         title: `Delete ${name} successfully`
       }

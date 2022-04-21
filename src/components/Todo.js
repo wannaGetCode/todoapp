@@ -72,7 +72,7 @@ function Todo({ task, index, completed, toggleCompleteTask, removeTask, editTask
         onChange={() => toggleCompleteTask(index)}
       />
       <label
-        className="todo-list__label"
+        className={`todo-list__label ${completed ? 'todo-list__completed' : ''}`}
         htmlFor={index}
       >
         {task}

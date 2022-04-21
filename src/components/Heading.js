@@ -1,4 +1,4 @@
-import { useState, memo } from 'react'
+import { useState } from 'react'
 
 function Heading({ addTask }) {
   const [name, setName] = useState('')
@@ -39,4 +39,4 @@ function Heading({ addTask }) {
   )
 }
 
-export default memo(Heading)
+export default Heading

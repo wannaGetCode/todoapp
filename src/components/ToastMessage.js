@@ -12,7 +12,7 @@ function ToastMessage({ toast, removeToast }) {
 		const autoRemove = setTimeout(() => removeToast(toast.id), 4000)
 
 		return () => clearTimeout(autoRemove)
-	}, [])
+	}, [toast])
 
 	const toastMessage = (
 		<div className={'toast toast--' + toast.type}>
